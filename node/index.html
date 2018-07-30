@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+<p id="test">click me</p>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#test').click(function () {
+            var username = $('#username').val()|| 'lisi';
+            var password = $('#pass').val()|| 123;
+            $.ajax({
+                'url': 'http://127.0.0.1:3000/?username=' + username + '&password=' + password,
+                'type': 'get',
+                success: function(data) {
+                    console.log(data);
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+
+            })
+        })
+    })
+</script>
+</body>
+</html>
