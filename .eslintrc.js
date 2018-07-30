@@ -22,6 +22,8 @@ module.exports = {
   // add your custom rules here
   rules: {
     // allow async-await
+      "vue/no-parsing-error": [2, { "x-invalid-end-tag": false }],
+    "vue/html-self-closing": "off",
     'generator-star-spacing': 'off',
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
@@ -30,6 +32,7 @@ module.exports = {
     'comma-dangle': 'off',
     '#q=import%2Fno-unresolved': 'off',
     'indent': 'off',
-    'space-before-function-paren': 'off'
+    'space-before-function-paren': 'off',
+    'no-useless-return': 'off'
   }
 }

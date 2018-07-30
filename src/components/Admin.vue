@@ -1,39 +1,70 @@
 <template>
   <div class="admin">
-    <Button type="primary" @click="modal1 = true">Display dialog box</Button>
-    <Modal
-      v-model="modal1"
-      title="Common Modal dialog box title"
-      @on-ok="ok"
-      @on-cancel="cancel">
-      <p>Content of dialog</p>
-      <p>Content of dialog</p>
-      <p>Content of dialog</p>
-    </Modal>
+    用户名: <Input type="text" style="width: auto" prefix="ios-contact" size="small" clearable v-model="userName"
+                id="userName"/>
+    <br>
+    <br>
+    密码: <Input type="text" style="width: auto" size="small" clearable v-model="userPwd" id="userPwd"/>
+    <br>
+    <br>
+    <Button @click="ok">注册</Button>
+    <Button @click="login">登录</Button>
   </div>
 </template>
 <script>
-  import {Modal, Button} from 'iview'
+  import {Modal, Button, Input, Icon} from 'iview'
 
   export default {
     name: 'Admin',
     components: {
-      Modal, Button
+      Modal, Button, Input, Icon
     },
     data() {
       return {
-        modal1: false
+        userName: '',
+        userPwd: ''
       }
     },
+     created() {
+    //   let userName = sessionStorage.getItem('userName');
+    //   let userPwd = sessionStorage.getItem('userPwd');
+    //   this.userName = userName;
+    //   this.userPwd = userPwd;
+         sessionStorage.clear()
+    //   // console.log(userName)
+    //   // console.log(userPwd)
+     },
     methods: {
       ok() {
-        this.$Message.info('Clicked ok');
-        this.api.get('http://api.map.baidu.com/telematics/v3/weather?location=%E5%8C%97%E4%BA%AC&output=json&ak=EGgzZ22dsboWQEcPQ6KDQLknQd3YkkkP').then((res) => {
-            alert(res.data)
-        })
+        if (this.userName === '' || this.userPwd === '') {
+          return
+        }
+        sessionStorage.setItem('userName', this.userName);
+        sessionStorage.setItem('userPwd', this.userPwd);
       },
-      cancel() {
-        this.$Message.info('Clicked cancel');
+      login() {
+        let userName = sessionStorage.getItem('userName');
+        let userPwd = sessionStorage.getItem('userPwd');
+        // sessionStorage.clear()
+        // console.log(userName)
+        // console.log(userPwd)
+        if (this.userName === '' && this.userPwd === '') {
+          this.$Message.info('请输入用户名或密码');
+          return
+        }
+        if (userName !== null) {
+          if (userName !== this.userName) {
+            this.$Message.info('用户名有误')
+          } else if (userPwd !== this.userPwd) {
+            this.$Message.info('密码有误')
+          } else {
+            if (userName === this.userName && userPwd === this.userPwd) {
+               this.$router.push({path: '/'})
+            }
+          }
+        } else {
+          this.$Message.info('请先注册')
+        }
       }
     }
   }
