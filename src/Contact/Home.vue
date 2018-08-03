@@ -1,7 +1,6 @@
 <template>
   <div class="home">
-    asdasda
-    <Table :column="column" :data="tableData"></Table>
+    <Table border :columns="column" :data="tableData"></Table>
   </div>
 </template>
 
@@ -19,8 +18,16 @@
             key: 'name'
           },
           {
+            title: '年龄',
+            key: 'age'
+          },
+          {
             title: '联系方式',
-            key: 'phoneNum'
+            key: 'address'
+          },
+          {
+            title: '时间',
+            key: 'date'
           },
           {
             title: '备注',
@@ -31,8 +38,51 @@
           {
             name: 'lisi',
             age: 18,
-            address: 'asdas',
-            date: 'asd'
+            address: '1831321321',
+            date: '2018-7-2',
+            nickName: 'nick '
+          },
+          {
+            name: 'lisi',
+            age: 18,
+            address: '1831321321',
+            date: '2018-7-2',
+            nickName: 'nick '
+          },
+          {
+            name: 'lisi',
+            age: 18,
+            address: '1831321321',
+            date: '2018-7-2',
+            nickName: 'nick '
+          },
+          {
+            name: 'lisi',
+            age: 18,
+            address: '1831321321',
+            date: '2018-7-2',
+            nickName: 'nick '
+          },
+          {
+            name: 'lisi',
+            age: 18,
+            address: '1831321321',
+            date: '2018-7-2',
+            nickName: 'nick '
+          },
+          {
+            name: 'lisi',
+            age: 18,
+            address: '1831321321',
+            date: '2018-7-2',
+            nickName: 'nick '
+          },
+          {
+            name: 'lisi',
+            age: 18,
+            address: '1831321321',
+            date: '2018-7-2',
+            nickName: 'nick '
           }
         ]
       }

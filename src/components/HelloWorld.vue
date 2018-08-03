@@ -6,18 +6,18 @@
           <div class="layout-logo">
           </div>
           <div class="layout-nav">
-            <MenuItem name="1">
-              <Icon type="ios-navigate"></Icon>
-              主页
-            </MenuItem>
-            <MenuItem name="2">
-              <Icon type="ios-keypad"></Icon>
-              通讯录
-            </MenuItem>
-            <MenuItem name="3">
-              <Icon type="ios-analytics"></Icon>
-              个人信息
-            </MenuItem>
+            <!--<MenuItem name="1">-->
+            <!--<Icon type="ios-navigate"></Icon>-->
+            <!--主页-->
+            <!--</MenuItem>-->
+            <!--<MenuItem name="2">-->
+            <!--<Icon type="ios-keypad"></Icon>-->
+            <!--通讯录-->
+            <!--</MenuItem>-->
+            <!--<MenuItem name="3">-->
+            <!--<Icon type="ios-analytics"></Icon>-->
+            <!--个人信息-->
+            <!--</MenuItem>-->
             <MenuItem name="4" class="flex flex-row" v-if="this.$route.params.name">
               <img class="avator" src="../assets/imgs/avator.jpg" alt="">
               <div>{{this.$route.params.name}}</div>
@@ -64,7 +64,8 @@
             <BreadcrumbItem>{{route}}</BreadcrumbItem>
           </Breadcrumb>
           <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
-            <router-view />
+            <home v-show="route===''"></home>
+            <router-view/>
           </Content>
         </Layout>
       </Layout>
@@ -75,7 +76,6 @@
 <script>
   import {Layout, Header, Sider, Content, Menu, MenuItem, Submenu, Breadcrumb, BreadcrumbItem, Icon} from 'iview'
   import Home from '@/Home/Home.vue'
-  import Contact from '@/Contact/Home.vue'
 
   export default {
     name: 'HelloWorld',
@@ -90,12 +90,11 @@
       Breadcrumb,
       BreadcrumbItem,
       Icon,
-      Home,
-      Contact
+      Home
     },
     data() {
       return {
-        route: 'Home'
+        route: ''
       }
     },
     created() {
@@ -163,7 +162,8 @@
     height: 50px;
     border-radius: 50% 50%;
   }
-  .ivu-breadcrumb{
+
+  .ivu-breadcrumb {
     width: 150px;
   }
 </style>
