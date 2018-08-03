@@ -4,7 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 // import iView from 'iview';
- import 'iview/dist/styles/iview.css';
+import 'iview/dist/styles/iview.css';
+import '@/assets/css/global.css'
 // Vue.use(iView)
 import {Message, Modal} from 'iview'
 import api from './api'

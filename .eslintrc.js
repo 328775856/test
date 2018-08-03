@@ -33,6 +33,7 @@ module.exports = {
     '#q=import%2Fno-unresolved': 'off',
     'indent': 'off',
     'space-before-function-paren': 'off',
-    'no-useless-return': 'off'
+    'no-useless-return': 'off',
+    'no-undef': 'off'
   }
 }
