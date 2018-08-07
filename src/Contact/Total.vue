@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="total">
     <Table border :columns="column" :data="tableData"></Table>
   </div>
 </template>
@@ -8,7 +8,7 @@
   import {Table} from 'iview'
 
   export default {
-    name: 'Home',
+    name: 'Total',
     components: {Table},
     data() {
       return {
@@ -36,49 +36,49 @@
         ],
         tableData: [
           {
-            name: '李四',
+            name: 'lisi',
             age: 18,
             address: '1831321321',
             date: '2018-7-2',
             nickName: 'nick '
           },
           {
-            name: '李四',
+            name: 'lisi',
             age: 18,
             address: '1831321321',
             date: '2018-7-2',
             nickName: 'nick '
           },
           {
-            name: '李四',
+            name: 'lisi',
             age: 18,
             address: '1831321321',
             date: '2018-7-2',
             nickName: 'nick '
           },
           {
-            name: '李四',
+            name: 'lisi',
             age: 18,
             address: '1831321321',
             date: '2018-7-2',
             nickName: 'nick '
           },
           {
-            name: '李四',
+            name: 'lisi',
             age: 18,
             address: '1831321321',
             date: '2018-7-2',
             nickName: 'nick '
           },
           {
-            name: '李四',
+            name: 'lisi',
             age: 18,
             address: '1831321321',
             date: '2018-7-2',
             nickName: 'nick '
           },
           {
-            name: '李四',
+            name: 'lisi',
             age: 18,
             address: '1831321321',
             date: '2018-7-2',
