@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Admin from '@/components/Admin'
+import Homepage from '@/components/Home'
 import Test from '@/components/Test'
 import Home from '@/Home/Home'
 import Contact from '@/Contact/Home'
@@ -65,8 +66,13 @@ const router = new Router({
       ]
     },
     {
+      path: '/Homepage',
+      name: 'Homepage',
+      component: Homepage
+    },
+    {
       path: '/',
-      name: 'admin',
+      name: 'Admin',
       component: Admin
     },
     {

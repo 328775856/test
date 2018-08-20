@@ -1,10 +1,10 @@
 <template>
   <div class="test">
     <!--<div class="btn"-->
-         <!--v-for="(btn, index) in testData"-->
-         <!--:type="btn.type"-->
-         <!--:text="btn.text"-->
-         <!--:key="index">{{btn.text}}-->
+    <!--v-for="(btn, index) in testData"-->
+    <!--:type="btn.type"-->
+    <!--:text="btn.text"-->
+    <!--:key="index">{{btn.text}}-->
     <!--</div>-->
     <div class="parent">5
       <div class="child">4
@@ -23,8 +23,7 @@
 
   export default {
     data() {
-      return {
-      }
+      return {}
     },
     render(h) {
       return h('div', {
@@ -63,21 +62,21 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
-  @border:1px solid #000;
-.parent{
-  width: 100px;
-  height: 100px;
-  border: @border;
-  .child{
-    width: 50px;
-    height: 50px;
-    background: rebeccapurple;
-    border: @border
-  }
-    div{
+  @border: 1px solid #000;
+  .parent {
+    width: 100px;
+    height: 100px;
+    border: @border;
+    .child {
+      width: 50px;
+      height: 50px;
+      background: rebeccapurple;
+      border: @border
+    }
+    div {
       width: 20px;
       height: 20px;
       background: red;
     }
-}
+  }
 </style>
