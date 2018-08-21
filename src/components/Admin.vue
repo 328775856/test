@@ -28,6 +28,13 @@
       }
     },
     created() {
+      this.axios.get('/api/getUserInfo')
+        .then((res) => {
+          if (res.data === 'ok') {
+            console.log(res)
+          }
+          this.$Message.info(res.data);
+        })
       //   let userName = sessionStorage.getItem('userName');
       //   let userPwd = sessionStorage.getItem('userPwd');
       //   this.userName = userName;
@@ -50,35 +57,53 @@
         //     return (<div>123</div>)
         //   }
         // })
-        sessionStorage.setItem('userName', this.userName);
-        sessionStorage.setItem('userPwd', this.userPwd);
-        this.$Message.info('注册成功，请登录');
+        this.axios.post('/api/register', {user_name: this.userName, user_password: this.userPwd})
+          .then((res) => {
+            if (res.data === 'ok') {
+              console.log(res)
+            }
+            this.$Message.info(res.data);
+          })
+        // sessionStorage.setItem('userName', this.userName);
+        // sessionStorage.setItem('userPwd', this.userPwd);
+        // this.$Message.info('注册成功，请登录');
         // this.userName = ''
         // this.userPwd = ''
       },
       login() {
-        let userName = sessionStorage.getItem('userName');
-        let userPwd = sessionStorage.getItem('userPwd');
-        // sessionStorage.clear()
-        // console.log(userName)
-        // console.log(userPwd)
         if (this.userName === '' && this.userPwd === '') {
           this.$Message.info('请输入用户名或密码');
           return
         }
-        if (userName !== null) {
-          if (userName !== this.userName) {
-            this.$Message.info('用户名有误')
-          } else if (userPwd !== this.userPwd) {
-            this.$Message.info('密码有误')
-          } else {
-            if (userName === this.userName && userPwd === this.userPwd) {
-              this.$router.push({name: 'HelloWorld', params: {name: this.userName}})
+        this.axios.post('/api/login', {user_name: this.userName, user_password: this.userPwd})
+          .then((res) => {
+            if (res.data === 'ok') {
+              sessionStorage.setItem('userName', this.userName);
+              sessionStorage.setItem('userPwd', this.userPwd);
+              this.$router.push({path: '/admin'})
+              console.log(res)
             }
-          }
-        } else {
-          this.$Message.info('请先注册')
-        }
+            this.$Message.info(res.data);
+          })
+        // let userName = sessionStorage.getItem('userName');
+        // let userPwd = sessionStorage.getItem('userPwd');
+        // sessionStorage.clear()
+        // console.log(userName)
+        // console.log(userPwd)
+
+        // if (userName !== null) {
+        //   if (userName !== this.userName) {
+        //     this.$Message.info('用户名有误')
+        //   } else if (userPwd !== this.userPwd) {
+        //     this.$Message.info('密码有误')
+        //   } else {
+        //     if (userName === this.userName && userPwd === this.userPwd) {
+        //       this.$router.push({name: 'HelloWorld', params: {name: this.userName}})
+        //     }
+        //   }
+        // } else {
+        //   this.$Message.info('请先注册')
+        // }
       }
     }
   }
