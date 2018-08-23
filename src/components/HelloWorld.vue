@@ -20,14 +20,15 @@
             <!--</MenuItem>-->
             <MenuItem name="4" class="flex flex-row" v-if="userName">
               <img class="avator" src="../assets/imgs/avator.jpg" alt="">
-              <div>{{userName}}</div>
+              <div class="name">{{userName}}</div>
+              <div class="loginTime">登录时间:{{loginTime}}</div>
             </MenuItem>
           </div>
         </Menu>
       </Header>
       <Layout>
         <Sider hide-trigger :style="{background: '#fff'}">
-          <Menu active-name="Home" theme="light" width="auto" :open-names="['1']" @on-select="show($event)">
+          <Menu theme="light" width="auto" :open-names="['1']" @on-select="show($event)">
             <MenuItem name="Home">
               <Icon type="ios-navigate"></Icon>
               主页
@@ -89,6 +90,7 @@
 <script>
   import {Layout, Header, Sider, Content, Menu, MenuItem, Submenu, Breadcrumb, BreadcrumbItem, Icon} from 'iview'
   import Home from '@/Home/Home.vue'
+  // import Utils from '@/utils.js'
 
   export default {
     name: 'HelloWorld',
@@ -108,10 +110,16 @@
     data() {
       return {
         route: '',
-        userName: ''
+        userName: '',
+        loginTime: ''
       }
     },
     created() {
+      // this.axios.get('/getUserInfo')
+      //   .then((res) => {
+      //     this.loginTime = Utils.formatDate(res.data[0].login_time)
+      //   })
+     // this.loginTime = Utils.formatDate(this.$route.query.loginTime)
       console.log(sessionStorage.getItem('userName'))
       this.userName = sessionStorage.getItem('userName')
     },
@@ -136,10 +144,13 @@
     }
 
     .ivu-layout-sider {
-      width: auto!important;
-      min-width: auto!important;
-      max-width: none!important;
-      flex: 0 0 150px!important;
+      width: auto !important;
+      min-width: auto !important;
+      max-width: none !important;
+      flex: 0 0 150px !important;
+    }
+    li.flex > div:last-child {
+      display: none;
     }
   }
 
@@ -178,8 +189,12 @@
   }
 
   li.flex {
-    width: 150px;
+    width: 350px;
     justify-content: space-between;
+  }
+
+  li.flex > div {
+    padding-left: 10px;
   }
 
   .layout-nav img {

@@ -15,8 +15,8 @@
 </template>
 <script>
   import {Modal, Button, Input, Icon} from 'iview'
- // import config from '../config'
-  let axios;
+  import Utils from '@/utils.js'
+  // let axios;
   export default {
     name: 'Admin',
     components: {
@@ -32,12 +32,12 @@
       // config.get('/getUserInfo').then((res) => {
       //   console.log(res)
       // })
-      axios = this.axios.create({
-        baseURL: 'http://nicksun666.club:3000',
-        headers: {
-          'Content-Type': 'text/plain'
-        }
-      });
+      // axios = this.axios.create({
+      //   baseURL: 'http://nicksun666.club:3000',
+      //   headers: {
+      //     'Content-Type': 'text/plain'
+      //   }
+      // });
       // axios.get('/getUserInfo')
       //   .then((res) => {
       //     if (res.data === 'ok') {
@@ -67,10 +67,10 @@
         //     return (<div>123</div>)
         //   }
         // })
-        axios.post('/register', {user_name: this.userName, user_password: this.userPwd})
+        this.axios.post('/register', {user_name: this.userName, user_password: this.userPwd})
           .then((res) => {
             if (res.data === 'ok') {
-              console.log(res)
+              //  console.log(res)
             }
             this.$Message.info(res.data);
           })
@@ -85,15 +85,15 @@
           this.$Message.info('请输入用户名或密码');
           return
         }
-        axios.post('/login', {user_name: this.userName, user_password: this.userPwd})
+        this.axios.post('/login', {user_name: this.userName, user_password: this.userPwd, login_time: Utils.formatDate(Date.now())})
           .then((res) => {
-            if (res.data === 'ok') {
+            console.log(res.data.code)
+            if (res.data.code === '200') {
               sessionStorage.setItem('userName', this.userName);
               sessionStorage.setItem('userPwd', this.userPwd);
               this.$router.push({path: '/admin'})
-              console.log(res)
             }
-            this.$Message.info(res.data);
+            this.$Message.info(res.data.msg ? res.data.msg : res.data);
           })
         // let userName = sessionStorage.getItem('userName');
         // let userPwd = sessionStorage.getItem('userPwd');

@@ -16,12 +16,17 @@ Vue.config.productionTip = false
 Vue.prototype.$Message = Message
 Vue.prototype.$Modal = Modal
 Vue.prototype.api = api
-Vue.prototype.axios = axios
+Vue.prototype.axios = axios.create({
+  baseURL: 'http://nicksun666.club:3000',
+  headers: {
+    'Content-Type': 'text/plain'
+  }
+})
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
-  components: { App },
+  components: {App},
   template: '<App/>'
 })
