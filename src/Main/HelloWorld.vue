@@ -39,7 +39,7 @@
                 通讯录
               </template>
               <MenuItem name="Contact">常用联系人</MenuItem>
-              <MenuItem name="Total">所有人</MenuItem>
+              <!--<MenuItem name="Total">所有人</MenuItem>-->
             </Submenu>
             <Submenu name="3">
               <template slot="title">
@@ -47,7 +47,7 @@
                 用户信息
               </template>
               <MenuItem name="Person">个人信息</MenuItem>
-              <MenuItem name="Other">其他人信息</MenuItem>
+              <!--<MenuItem name="Other">其他人信息</MenuItem>-->
             </Submenu>
             <Submenu name="4">
               <template slot="title">
@@ -90,7 +90,7 @@
 <script>
   import {Layout, Header, Sider, Content, Menu, MenuItem, Submenu, Breadcrumb, BreadcrumbItem, Icon} from 'iview'
   import Home from '@/Home/Home.vue'
-  // import Utils from '@/utils.js'
+  import Utils from '@/utils.js'
 
   export default {
     name: 'HelloWorld',
@@ -115,11 +115,15 @@
       }
     },
     created() {
-      // this.axios.get('/getUserInfo')
-      //   .then((res) => {
-      //     this.loginTime = Utils.formatDate(res.data[0].login_time)
-      //   })
-     // this.loginTime = Utils.formatDate(this.$route.query.loginTime)
+      this.axios.get('/getUserInfo')
+        .then((res) => {
+          for (let i of res.data.data) {
+            if (i.user_name === this.userName) {
+              this.loginTime = Utils.formatDate(i.login_time)
+            }
+          }
+        })
+      // this.loginTime = Utils.formatDate(this.$route.query.loginTime)
       console.log(sessionStorage.getItem('userName'))
       this.userName = sessionStorage.getItem('userName')
     },
@@ -149,6 +153,7 @@
       max-width: none !important;
       flex: 0 0 150px !important;
     }
+
     li.flex > div:last-child {
       display: none;
     }
@@ -157,6 +162,7 @@
   .hello {
     width: 100%;
     height: 100%;
+    text-align: center;
   }
 
   .layout {
@@ -355,7 +361,7 @@
 
   @keyframes my {
     0% {
-      bottom: --100%;
+      bottom: -100%;
     }
     100% {
       bottom: 80%

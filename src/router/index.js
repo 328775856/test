@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import Admin from '@/components/Admin'
-import Homepage from '@/components/Home'
-import Test from '@/components/Test'
+import HelloWorld from '@/Main/HelloWorld'
+import Admin from '@/Main/Admin'
+import Homepage from '@/Main/Home'
+import Test from '@/Main/Test'
 import Home from '@/Home/Home'
 import Contact from '@/Contact/Home'
 import Total from '@/Contact/Total'
@@ -21,7 +21,7 @@ const router = new Router({
   mode: 'history',
   routes: [
     {
-      path: '/admin',
+      path: '/main',
       name: 'HelloWorld',
       component: HelloWorld,
       meta: {

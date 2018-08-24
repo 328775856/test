@@ -91,7 +91,7 @@
             if (res.data.code === '200') {
               sessionStorage.setItem('userName', this.userName);
               sessionStorage.setItem('userPwd', this.userPwd);
-              this.$router.push({path: '/admin'})
+              this.$router.push({path: '/main'})
             }
             this.$Message.info(res.data.msg ? res.data.msg : res.data);
           })

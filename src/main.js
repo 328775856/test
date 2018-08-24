@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import axios from 'axios'
+import host from './Host'
 // import iView from 'iview';
 import 'iview/dist/styles/iview.css';
 import '@/assets/css/global.css'
@@ -16,8 +17,9 @@ Vue.config.productionTip = false
 Vue.prototype.$Message = Message
 Vue.prototype.$Modal = Modal
 Vue.prototype.api = api
+let baseHost = host.prod
 Vue.prototype.axios = axios.create({
-  baseURL: 'http://nicksun666.club:3000',
+  baseURL: baseHost,
   headers: {
     'Content-Type': 'text/plain'
   }
