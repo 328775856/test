@@ -46,7 +46,7 @@
                 <Icon type="ios-analytics"></Icon>
                 用户信息
               </template>
-              <MenuItem name="Person">个人信息</MenuItem>
+              <MenuItem name="User  ">个人信息</MenuItem>
               <!--<MenuItem name="Other">其他人信息</MenuItem>-->
             </Submenu>
             <Submenu name="4">

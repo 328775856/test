@@ -17,7 +17,7 @@ Vue.config.productionTip = false
 Vue.prototype.$Message = Message
 Vue.prototype.$Modal = Modal
 Vue.prototype.api = api
-let baseHost = host.prod
+let baseHost = host.dev
 Vue.prototype.axios = axios.create({
   baseURL: baseHost,
   headers: {
