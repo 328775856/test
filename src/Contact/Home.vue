@@ -189,8 +189,17 @@
               this.axios.post('/deleteContact', {selectionList: arr})
                 .then((res) => {
                   if (res.data.code === '200') {
-                    that.pageNo = Math.ceil(res.data.total / 10)
-                    that.total = that.total - 11
+                    if (res.data.total > 20) {
+                      that.total = that.total - 11
+                      console.log(that.total)
+                      that.pageNo = Math.ceil(res.data.total / 10)
+                    } else if (res.data.total < 20 && res.data.total > 11) {
+                      that.total = 19
+                      that.pageNo = 2
+                    } else {
+                      that.total = 9
+                      that.pageNo = 1
+                    }
                     return true
                   }
                 })
