@@ -1,6 +1,6 @@
 <template>
   <div class="system">
-    <h1>This is a new system for bilibili！</h1>
+    <h1>This is a demo!</h1>
     <img class="bg" src="@/assets/imgs/bibibg.png" alt="">
     <img class="logo" src="@/assets/imgs/bili.png" alt="">
   </div>

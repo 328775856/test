@@ -28,12 +28,13 @@
       </Header>
       <Layout>
         <Sider hide-trigger :style="{background: '#fff'}">
-          <Menu theme="light" width="auto" :open-names="['1']" @on-select="show($event)">
+          <Menu theme="light" width="auto" :open-names="routeList[$route.name]" @on-select="show($event)"
+                :active-name="$route.name">
             <MenuItem name="Home">
               <Icon type="ios-navigate"></Icon>
               主页
             </MenuItem>
-            <Submenu name="addressList">
+            <Submenu name="2">
               <template slot="title">
                 <Icon type="ios-keypad"></Icon>
                 通讯录
@@ -46,7 +47,7 @@
                 <Icon type="ios-analytics"></Icon>
                 用户信息
               </template>
-              <MenuItem name="User  ">个人信息</MenuItem>
+              <MenuItem name="User">个人信息</MenuItem>
               <!--<MenuItem name="Other">其他人信息</MenuItem>-->
             </Submenu>
             <Submenu name="4">
@@ -62,10 +63,10 @@
         <Layout :style="{padding: '0 24px 24px'}">
           <Breadcrumb :style="{margin: '24px 0'}">
             <BreadcrumbItem>Admin</BreadcrumbItem>
-            <BreadcrumbItem>{{route}}</BreadcrumbItem>
+            <BreadcrumbItem>{{$route.name}}</BreadcrumbItem>
           </Breadcrumb>
           <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
-            <div v-if="this.route === ''&& $route.path.length<=7" class="bg">
+            <div v-if="$route.name === ''&& $route.path.length<=7" class="bg">
               <div class="shape"></div>
               <div class="shape"></div>
               <div class="shape"></div>
@@ -109,9 +110,14 @@
     },
     data() {
       return {
-        route: '',
         userName: '',
-        loginTime: ''
+        loginTime: '',
+        routeList: {
+          'Contact': ['2'],
+          'User': ['3'],
+          'System': ['4'],
+          'SystemMsg': ['4']
+        }
       }
     },
     created() {
@@ -130,9 +136,13 @@
     methods: {
       show(e) {
         this.$router.push({name: e})
-        this.route = e
       }
-    }
+    },
+    // watch: {
+    //   routeName: function (n) {
+    //     alert(n)
+    //   }
+    // }
   }
 </script>
 
