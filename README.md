@@ -31,7 +31,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 ### vue，nodejs搭建的后台管理
 # 实现功能
-1.登录，注册。
-2.显示登录注册时间。
-3.通讯录功能，包括增加及删除联系人。
-4.注册名单展示。
+1. 登录，注册。
+2. 显示登录注册时间。
+3. 通讯录功能，包括增加及删除联系人。
+4. 注册名单展示。
