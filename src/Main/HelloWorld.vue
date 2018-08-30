@@ -66,7 +66,7 @@
             <BreadcrumbItem>{{$route.name}}</BreadcrumbItem>
           </Breadcrumb>
           <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
-            <div v-if="$route.name === ''&& $route.path.length<=7" class="bg">
+            <div v-if="$route.name === 'HelloWorld'&& $route.path.length<=7" class="bg">
               <div class="shape"></div>
               <div class="shape"></div>
               <div class="shape"></div>
@@ -230,7 +230,7 @@
 
   .bg {
     width: 100%;
-    height: 100%;
+    height: 50%;
     background: #57c5f7;
     position: relative;
     overflow: hidden;
@@ -408,5 +408,8 @@
 <style>
   .ivu-table-border td, .ivu-table-border th {
     text-align: center;
+  }
+  .ivu-layout{
+    height: 100%;
   }
 </style>

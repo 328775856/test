@@ -1,5 +1,5 @@
 const host = {
-  dev: 'http://localhost:3000',
-  prod: 'http://nicksun666.club:3000'
+  dev: 'http://localhost:80',
+  prod: 'http://nicksun666.club:80'
 }
 export default host

@@ -131,6 +131,7 @@
             this.total = ~~(res.data.total)
             this.loading = false
             console.log(this.total)
+            console.log(res.data.data)
           }
         })
     },
