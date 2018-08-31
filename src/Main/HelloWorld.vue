@@ -121,7 +121,7 @@
       }
     },
     created() {
-      this.axios.get('/getUserInfo')
+      this.axios.get('/getUserInfo', {params: {pageNo: 0}})
         .then((res) => {
           for (let i of res.data.data) {
             if (i.user_name === this.userName) {
@@ -409,7 +409,8 @@
   .ivu-table-border td, .ivu-table-border th {
     text-align: center;
   }
-  .ivu-layout{
+
+  .ivu-layout {
     height: 100%;
   }
 </style>

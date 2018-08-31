@@ -10,16 +10,26 @@
   export default {
     name: "Pages",
     components: {Page},
-    props: ['total', 'pageNo'],
+    props: ['total', 'pageNo', 'search', 'searchValue'],
     data() {
-      return {
-      }
+      return {}
     },
     created() {
     },
     methods: {
       change(e) {
-        this.axios.get(`/get${this.$route.name}Info`, {params: {pageNo: e}})
+        if (!this.search) {
+          this.axios.get(`/get${this.$route.name}Info`, {params: {pageNo: e}})
+            .then((res) => {
+              // console.log(res)
+              this.$emit('callback', res.data.data)
+              this.$emit('callbackNum', e)
+              //  console.log(this.total)
+              this.loading = false
+            })
+          return
+        }
+        this.axios.post('/searchContact', {value: this.searchValue, pageNo: e})
           .then((res) => {
             // console.log(res)
             this.$emit('callback', res.data.data)
